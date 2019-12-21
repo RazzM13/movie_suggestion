@@ -1,10 +1,19 @@
+import { Client } from 'pg';
+
 class MoviesDatabase {
   constructor() {
-    this._data = [];
+    this._db = new Client();
+    this._db.connect();
   }
 
   find(q, sortBy) {
-    return Promise.resolve(this._data);
+    return this._db
+      .query(
+        `SELECT * FROM movies WHERE film LIKE '%${q}%' ORDER BY ${sortBy} DESC;`
+      )
+      .then(d => {
+        return d.rows;
+      });
   }
 }
 
