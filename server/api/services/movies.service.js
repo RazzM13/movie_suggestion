@@ -4,7 +4,7 @@ import db from './movies.db.service';
 class MoviesService {
   find(q, sortBy = 'rotten_tomatoes') {
     l.info(`${this.constructor.name}.find(${q}, ${sortBy})`);
-    return db.find(q);
+    return db.find(q, sortBy);
   }
 }
 
