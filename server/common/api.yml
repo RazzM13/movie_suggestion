@@ -16,56 +16,28 @@ produces:
   - application/json
 
 
-definitions:
-  ExampleBody:
-    type: object
-    title: example
-    required:
-      - name
-    properties:
-      name:
-        type: string
-        example: no_stress
-
 paths:
-  /examples:
+  /suggestions:
     get:
       tags:
-        - Examples
-      description: Fetch all examples
+        - Movie suggestions
+      description: Show movies suggestions
       responses:
         200:
-          description: Returns all examples
-    post:
-      tags:
-        - Examples
-      description: Create a new example
+          description: Returns all suggestions
       parameters:
-        - name: example
-          in: body
-          description: an example
+        - name: q
+          type: string
+          in: query
+          description: movie name
           required: true
-          schema: 
-            $ref: "#/definitions/ExampleBody"
-      responses:
-        200:
-          description: Returns all examples
-
-  /examples/{id}:
-    get:
-      tags:
-        - Examples
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The id of the example to retrieve
-          type: integer
-      responses:
-        200:
-          description: Return the example with the specified id
-        404:
-          description: Example not found
+        - name: sortBy
+          type: string
+          in: query
+          default: "rotten_tomatoes"
+          enum: ["rotten_tomatoes", "audience_score"]
+          description: sort movies by rotten_tomatoes or audience_score
+          required: false
 
   /spec:
     get:
