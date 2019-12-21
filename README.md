@@ -1,6 +1,8 @@
-# rest_api_2
+# rest_api
 
-My cool app
+A rest API built as a challenge exercise for a recent JOB hunt.
+
+It is comprised of a project scaffold, using "generator-express-no-stress", for reducing boilerplate coding and configurations and it comes with Swagger API validation, ESLint and Babel.  
 
 ## Get Started
 
